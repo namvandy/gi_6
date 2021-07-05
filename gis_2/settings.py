@@ -32,7 +32,7 @@ while True:
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env_list['SECRET_KEY']
-
+# SECRET_KEY = 'django-insecure-(0gz$r4fdh82)wppex72sz-^!$xvyna@u_&owxeahtx^^n8z91'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
