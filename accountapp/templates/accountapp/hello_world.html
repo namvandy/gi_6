@@ -2,26 +2,16 @@
 
 {% block content %}
 
-    <style>
+   <div style="margin: 2rem; text-align: center">
 
-        .testing{
-            background-color: yellow;
-            margin: 1rem;
-            height: 48px;
-            width: 48px;
-            border-radius: .5rem;
-            display: inline-block; <!--세로배열이아닌 가로배열-->
-        }
-    </style>
 
-    <div style="height: 20rem; background-color: aqua; margin: 2rem;
-     border-radius: 1rem;font-size:2rem"> <!--overflow:scroll을 넣으면 스크롤생성가능-->
-        <h1>Test</h1>
-
-    <div class="testing" style="height: 48px; width: 48px">px</div>
-    <div class="testing" style="height: 3rem; width: 3rem">rem</div>
-    <div class="testing" style="height: 3em; width: 3em">em</div>
-    <div class="testing" style="height: 30%; width: 30%">%</div>
+    <!--overflow:scroll을 넣으면 스크롤생성가능-->
+        <h1>METHOD</h1>
+        <form action="/accounts/hello_world/" method="post">
+            {% csrf_token %} <!--쟝고의 링크 접속설정-->
+            <input type="submit" class="btn btn-dark rounded-pill px-4">
+        </form>
+        <h3>{{ text }}</h3>
     </div>
 
 {% endblock %}
