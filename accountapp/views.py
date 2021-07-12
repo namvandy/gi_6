@@ -19,8 +19,8 @@ def hello_world(request):
 
 
         return render(request, 'accountapp/hello_world.html',
-                      context={'hell_world_list': hello_world_list})
+                      context={'hello_world_list': hello_world_list})
     else:
         hello_world_list = HelloWorld.objects.all()
         return render(request, 'accountapp/hello_world.html',
-                      context={'hell_world_list': hello_world_list})
+                      context={'hello_world_list': hello_world_list})
