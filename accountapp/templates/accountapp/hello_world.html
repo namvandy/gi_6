@@ -9,6 +9,7 @@
         <h1>METHOD</h1>
         <form action="/accounts/hello_world/" method="post">
             {% csrf_token %} <!--쟝고의 링크 접속설정-->
+            <input type="text" name="input_text">
             <input type="submit" class="btn btn-dark rounded-pill px-4">
         </form>
         <h3>{{ text }}</h3>
