@@ -43,5 +43,5 @@ class AccountCreateView(CreateView):
     #두개가 존재, 비밀번호 입력창, 출력창
     success_url = reverse_lazy('accountapp:hello_world')
     #reverse를 바로쓰면안됨. _lazy를 쓰는이유는 실체 객체생성후 필요할 때 호출해야함. function base와 class base의 차이
-    template_name = 'acoountapp/create.html'
+    template_name = 'accountapp/create.html'
     #이 4개로 회원가입 로직 완성
