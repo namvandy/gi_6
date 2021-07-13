@@ -5,11 +5,11 @@
     <div class="text-center">
         <div class="m-5">
            <h4>
-               Sign Up
+               Log In
            </h4>
         </div>
         <div>
-            <form action="{% url 'accountapp:create' %}" method="post">
+            <form action="{% url 'accountapp:login' %}" method="post">
                 {% csrf_token %} <!--사이트간 해킹방지 우회-->
                 {{ form }}
                 <div class="m-5">
