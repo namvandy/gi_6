@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="text-center mw-500 m-auto">
+        <div class="m-5">
+           <h4>
+               {{ target_user.username }} {# 보고싶은 계정이름 #}
+           </h4>
+        </div>
+        <div>
+                {{ target_user.date_joined }} {# 언제가입했는지 #}
+        </div>
+    </div>
+
+{% endblock %}
