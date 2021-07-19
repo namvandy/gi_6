@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from accountapp.models import HelloWorld
 
@@ -42,6 +42,7 @@ class AccountCreateView(CreateView):
     form_class = UserCreationForm #django에서 지원하는 기능 UserCreationForm
     #두개가 존재, 비밀번호 입력창, 출력창
     success_url = reverse_lazy('accountapp:hello_world')
+    #만들었을 때의 주소 지정
     #reverse를 바로쓰면안됨. _lazy를 쓰는이유는 실체 객체생성후 필요할 때 호출해야함. function base와 class base의 차이
     template_name = 'accountapp/create.html'
     #이 4개로 회원가입 로직 완성
@@ -50,3 +51,10 @@ class AccountDetailView(DetailView):
     model = User
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
+
+class AccountUpdateView(UpdateView):
+    model = User
+    form_class = UserCreationForm
+    context_object_name = 'target_user'
+    success_url = reverse_lazy('accountapp:hello_world')
+    template_name = 'accountapp/update.html'

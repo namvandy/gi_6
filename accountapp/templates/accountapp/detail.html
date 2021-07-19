@@ -11,6 +11,11 @@
         <div>
                 {{ target_user.date_joined }} {# 언제가입했는지 #}
         </div>
+        <div><!--updateview 링크생성-->
+           <a href="{% url 'accountapp:update' pk=target_user.pk %}">
+               Update Info
+           </a>
+        </div>
     </div>
 
 {% endblock %}
