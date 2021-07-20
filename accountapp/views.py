@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render
 
 # Create your views here.
@@ -64,16 +64,18 @@ class AccountUpdateView(UpdateView):
 
     def get(self, request,*args, **kwargs):
         # return super().get(request,*args, **kwargs)#부모메서드 호출 #부모클래스와 완전똑같음(여기까지 작성시),작성안한거나 마찬가지
-        if request.user.is_authenticated:
+        if request.user.is_authenticated and self.get_object()==request.user:
             return super().get(request, *args, **kwargs) #로그인이 되어있으면 실행
         else:
-            return HttpResponseRedirect(reverse('accountapp:login'))
+            # return HttpResponseRedirect(reverse('accountapp:login'))
+            return HttpResponseForbidden
 
     def post(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return super().post(request, *args, **kwargs) #로그인이 되어있으면 실행
+        if request.user.is_authenticated and self.get_object() == request.user:
+            return super().post(request, *args, **kwargs)  # 로그인이 되어있으면 실행
         else:
-            return HttpResponseRedirect(reverse('accountapp:login'))
+            # return HttpResponseRedirect(reverse('accountapp:login'))
+            return HttpResponseForbidden
 # U
 class AccountDeleteView(DeleteView):
     model = User
@@ -81,15 +83,17 @@ class AccountDeleteView(DeleteView):
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/delete.html'
 
-    def get(self, request,*args, **kwargs):
-        if request.user.is_authenticated:
-            return super().get(request, *args, **kwargs)
+    def get(self, request, *args, **kwargs):
+        # return super().get(request,*args, **kwargs)#부모메서드 호출 #부모클래스와 완전똑같음(여기까지 작성시),작성안한거나 마찬가지
+        if request.user.is_authenticated and self.get_object() == request.user:
+            return super().get(request, *args, **kwargs)  # 로그인이 되어있으면 실행
         else:
-            return HttpResponseRedirect(reverse('accountapp:login'))
+            # return HttpResponseRedirect(reverse('accountapp:login'))
+            return HttpResponseForbidden
 
     def post(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return super().post(request, *args, **kwargs)
+        if request.user.is_authenticated and self.get_object() == request.user:
+            return super().post(request, *args, **kwargs)  # 로그인이 되어있으면 실행
         else:
-            return HttpResponseRedirect(reverse('accountapp:login'))
-#D
+            # return HttpResponseRedirect(reverse('accountapp:login'))
+            return HttpResponseForbidden
