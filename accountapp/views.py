@@ -9,6 +9,7 @@ from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
+from accountapp.decorators import account_ownership_required
 from accountapp.forms import AccountCreationForm
 from accountapp.models import HelloWorld
 
@@ -59,8 +60,12 @@ class AccountDetailView(DetailView):
     template_name = 'accountapp/detail.html'
 #R
 
-@method_decorator(login_required, 'get')
-@method_decorator(login_required, 'post')
+has_ownership = [login_required, account_ownership_required]
+
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post') #이렇게 리스트로 만들면 아래내용 decorate미사용 가능
+# @method_decorator(account_ownership_required, 'get')
+# @method_decorator(account_ownership_required, 'post')
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm
@@ -84,8 +89,10 @@ class AccountUpdateView(UpdateView):
     #         return HttpResponseForbidden
 # U
 
-@method_decorator(login_required, 'get')
-@method_decorator(login_required, 'post')
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
+# @method_decorator(account_ownership_required, 'get')
+# @method_decorator(account_ownership_required, 'post')
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
