@@ -62,10 +62,11 @@ class AccountDetailView(DetailView):
 
 has_ownership = [login_required, account_ownership_required]
 
-@method_decorator(has_ownership, 'get')
-@method_decorator(has_ownership, 'post') #이렇게 리스트로 만들면 아래내용 decorate미사용 가능
+
 # @method_decorator(account_ownership_required, 'get')
 # @method_decorator(account_ownership_required, 'post')
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post') #이렇게 리스트로 만들면 위내용 decorate미사용 가능
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm
