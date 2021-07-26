@@ -8,8 +8,10 @@
                Create Profile
            </h4>
         </div>
-        <div>
-            <form action="{% url 'profileapp:create' %}" method="post">
+        <div><!--encoding type = enctype///multipart:파일이나 이미지를 전송할 때 사용-->
+            <form action="{% url 'profileapp:create' %}"
+                  enctype="multipart/form-data"
+                  method="post">
                 {% csrf_token %} <!--사이트간 해킹방지 우회-->
                  {% bootstrap_form form %}
                 <div class="m-5">
