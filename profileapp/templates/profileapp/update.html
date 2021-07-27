@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+    <div class="text-center mw-500 m-auto">
+        <div class="m-5">
+           <h4>
+               Update Profile
+           </h4>
+        </div>
+        <div><!--encoding type = enctype///multipart:파일이나 이미지를 전송할 때 사용-->
+            <form action="{% url 'profileapp:update' pk=target_profile.pk %}"
+                  enctype="multipart/form-data"
+                  method="post">
+                {% csrf_token %} <!--사이트간 해킹방지 우회-->
+                 {% bootstrap_form form %}
+                <div class="m-5">
+                <input type="submit" class="btn btn-dark rounded-pill px-5">
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
