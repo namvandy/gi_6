@@ -6,8 +6,9 @@
         <div class="m-5">
            {% if target_user.profile %}
                <img src="{{ target_user.profile.image.url }}"
-                    alt="profile img">
-               <h4>{{ target_user.profile.nickname }} {# 보고싶은 계정이름 #}</h4>
+                    class="profile_image m-4"
+                    alt="profile image">
+               <h2 class="NNS_B">{{ target_user.profile.nickname }} {# 보고싶은 계정이름 #}</h2>
                <h5>{{ target_user.profile.message }}</h5>
             {% else %}
             <h4>
