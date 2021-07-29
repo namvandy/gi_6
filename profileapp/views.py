@@ -39,6 +39,6 @@ class ProfileUpdateView(UpdateView):
     template_name = 'profileapp/update.html'
 
     def get_success_url(self):
-        return reverse('accountapp:detail', kwargs={'pk':self.object.pk}) #타겟이 되는 프로필을 self.object로 불러옴
+        return reverse('accountapp:detail', kwargs={'pk':self.object.user.pk}) #타겟이 되는 프로필을 self.object로 불러옴
 
 
