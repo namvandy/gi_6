@@ -28,13 +28,13 @@
 }
 
 .round_button{
-    color:black;
+    color:purple;
     text-decoration: none; /*밑줄없어짐*/
-    box-shadow: 0 0 3px black; /*그림자의위치 그림자의크기 그림자의색깔 */
+    box-shadow: 3px 3px 3px black; /*그림자의위치 그림자의크기 그림자의색깔 */
     border-radius: 20rem;
     padding: .3rem;
 }
 
 .round_button:hover{ /*마우스를 올려놓을 때*/
-    color:dimgrey;
+    color:lightpink;
 }
