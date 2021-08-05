@@ -36,6 +36,17 @@
         {% endfor %}
     </div>
     <script src="{% static 'js/magicgrid.js' %}"></script>
+
+    <div class="text-center my-5">
+        <a href="{% url 'articleapp:create' %}"
+            class="btn btn-dark rounded-pill material-icons"> <!--icons으로 적용-->
+            brush
+        </a>
+         <a href="{% url 'articleapp:create' %}"
+            class="btn btn-outline-dark rounded-pill px-5"> <!--그냥 create article 버튼-->
+            Create Article
+        </a>
+    </div>
 {#    #}
 
 
