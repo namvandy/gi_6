@@ -38,3 +38,15 @@
 .round_button:hover{ /*마우스를 올려놓을 때*/
     color:lightpink;
 }
+
+.article-image{
+    width: 60%;
+    border-radius:2rem;
+    box-shadow: 0 0 1rem grey;
+}
+
+.article-content{
+    text-align:left;
+    font-size:1.1rem;
+
+}
