@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import CreateView, DeleteView
+from django.views.generic import CreateView
 
 from commentapp.forms import CommentCreationForm
 from commentapp.models import Comment
