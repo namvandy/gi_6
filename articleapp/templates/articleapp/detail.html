@@ -39,6 +39,13 @@
         <div class="text-center my-4">
             {# 댓글내용, 댓글작성 #} {# comment앱을 만들어서 댓글기능 만들것임. #}
             {% include 'commentapp/create.html' %}
+
+            {% for comment in target_article.comment.all %}
+                <div class="text-center my-2">
+                    {{ comment.comment }}
+                </div>
+
+            {% endfor %}
         </div>
     </div>
 
