@@ -1,12 +1,17 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 # Create your views here.
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DeleteView
 
+from commentapp.decorators import comment_ownership_required
 from commentapp.forms import CommentCreationForm
 from commentapp.models import Comment
 from django.urls import reverse
 
+@method_decorator(login_required, 'get')
+@method_decorator(login_required, 'post')
 class CommentCreateView(CreateView):
     model = Comment
     form_class = CommentCreationForm
@@ -20,6 +25,8 @@ class CommentCreateView(CreateView):
         form.instance.article_id = self.request.POST.get('article_pk')
         return super().form_valid(form)
 
+@method_decorator(comment_ownership_required,'get')
+@method_decorator(comment_ownership_required,'post')
 class CommentDeleteView(DeleteView):
     model = Comment
     form_class = CommentCreationForm
