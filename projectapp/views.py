@@ -1,11 +1,16 @@
-from django.db import models
+
 from django.shortcuts import render
 
 # Create your views here.
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
-class Project(models.Model):
-    name = models.CharField(max_length=20,null=False)
-    description = models.CharField(max_length=200,null=True,blank=True)
-    image = models.ImageField(upload_to='project/', null=False)
+from projectapp.forms import ProjectCreationForm
+from projectapp.models import Project
 
-    created_at = models.DateTimeField(auto_now_add=True)
+
+class ProjectCreateView(CreateView):
+    model = Project
+    form_class = ProjectCreationForm
+    success_url = reverse_lazy('articleapp:list')
+    template_name = 'projectapp/create.html'
