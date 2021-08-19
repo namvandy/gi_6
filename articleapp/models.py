@@ -2,12 +2,16 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+from projectapp.models import Project
 
 
 class Article(models.Model):
     writer = models.ForeignKey(User, on_delete=models.SET_NULL,
                                related_name='article', null=True)
     #models.SET_NULL:작성자 미상의 글로 남기겠다
+    project = models.ForeignKey(Project,on_delete=models.SET_NULL,
+                                related_name='article',null=True) #게시글과 project의 연결고리
+
     title = models.CharField(max_length=300, null=True) #null=True:타이틀이 없어도 된다.
     image = models.ImageField(upload_to='article/',null=True)
     content = models.TextField(null=True) #긴 문자열은 CharFiled말고 TextField로 지정
