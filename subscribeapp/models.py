@@ -11,4 +11,4 @@ class Subscription(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='subscription', null=False)
 
     class Meta:
-        unique_together = ['user','project']    # 하나의 사용자는 하나의 구독만 가능하게 옵션. 두 개를 묶어 하나로 만듬.
+        unique_together = ['user','project']    # 하나의 사용자는 한 번의 구독만 가능하게 옵션. 두 개를 묶어 하나로 만듬.
