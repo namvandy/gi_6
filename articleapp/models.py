@@ -18,3 +18,5 @@ class Article(models.Model):
 
     created_at = models.DateField(auto_now_add=True,null=True)
     #게시글 작성된 시간, 자동으로 시간지정
+
+    like = models.IntegerField(default=0)
