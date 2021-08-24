@@ -72,3 +72,14 @@
         font-size : 13px;
     }
 }
+
+/*앵커태그 변경 하트에 밑줄사라짐(개발자도구 disable cache)*/
+a {
+    text-decoration: none;
+    color: black;
+}
+/*마우스가 호버링되어있을 때(마우스를 올렸을 때)*/
+a:hover {
+    color: red;
+    text-decoration: none;
+}
