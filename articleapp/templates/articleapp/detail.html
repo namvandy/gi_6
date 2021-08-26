@@ -25,8 +25,8 @@
             <img src="{{ target_article.image.url }}"
                  class="article-image"
                  alt="">
-            <div class="article-content">
-                {{ target_article.content }}
+            <div class="article-content my-5">
+                {{ target_article.content | safe }}
             </div>
             {% if target_article.writer == user %}
             <div>
