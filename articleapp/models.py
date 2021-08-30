@@ -10,7 +10,7 @@ class Article(models.Model):
                                related_name='article', null=True)
     #models.SET_NULL:작성자 미상의 글로 남기겠다
     project = models.ForeignKey(Project,on_delete=models.SET_NULL,
-                                related_name='article',null=True) #게시글과 project의 연결고리
+                                related_name='article',null=True, blank=True) #게시글과 project의 연결고리
 
     title = models.CharField(max_length=300, null=True) #null=True:타이틀이 없어도 된다.
     image = models.ImageField(upload_to='article/',null=True)
