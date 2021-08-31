@@ -84,3 +84,8 @@ __pycache__/
 media/
 
 staticfiles/
+
+HKK_Meer.pem
+
+HKK_Meer_gcp
+HKK_Meer_gcp.pub
