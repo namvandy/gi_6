@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+
+  nginx:
+    image: nginx:1.19.5
+    ports:
+      - 80:80
+    networks:
+      - gis_django_network
+    volumes:
+      - /home/ubuntu/nginx.conf:/etc/nginx/nginx.conf
+      - gis_6_static:/data/static/
+      - gis_6_media:/data/media/
+
+  django:
+    image: gis_2_django:3
+    networks:
+      - gis_django_network
+    volumes:
+      - gis_6_static:/home/gi_6/staticfiles/
+      - gis_6_media:/home/gi_6/media/
+
+networks:
+  gis_django_network:
+
+volumes:
+  gis_6_static:
+  gis_6_media:
