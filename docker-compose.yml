@@ -13,12 +13,24 @@ services:
       - gis_6_media:/data/media/
 
   django:
-    image: gis_2_django:3
+    image: gis_2_django:4
     networks:
       - gis_django_network
     volumes:
       - gis_6_static:/home/gi_6/staticfiles/
       - gis_6_media:/home/gi_6/media/
+
+  mariadb:
+    image: mariadb:10.5
+    networks:
+      - gis_django_network
+    volumes:
+      - gis_mariadb:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: password1234
+      MARIADB_DATABASE: django
+      MARIADB_USER: django
+      MARIADB_PASSWORD: password1234
 
 networks:
   gis_django_network:
@@ -26,3 +38,4 @@ networks:
 volumes:
   gis_6_static:
   gis_6_media:
+  gis_mariadb:
