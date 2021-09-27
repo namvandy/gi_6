@@ -19,7 +19,8 @@ services:
     volumes:
       - gis_6_static:/home/gi_6/staticfiles/
       - gis_6_media:/home/gi_6/media/
-
+    secrets:
+      - DJANGO_SECRET_KEY
   mariadb:
     image: mariadb:10.5
     networks:
@@ -39,3 +40,7 @@ volumes:
   gis_6_static:
   gis_6_media:
   gis_mariadb:
+
+secrets:
+  DJANGO_SECRET_KEY:
+    external: true
